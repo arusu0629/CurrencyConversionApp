@@ -10,11 +10,11 @@ import SwiftUI
 
 struct ExchangeRateListView: View {
     
-    @ObservedObject var exchangeRateListVM = ExchangeRateListVM()
+    @EnvironmentObject var exchangeRateListVM: ExchangeRateListVM
     
     var body: some View {
-        List(exchangeRateListVM.currencies) { currency in
-            ExchangeRateListRow(currency: currency)
+        List(exchangeRateListVM.exchangeRateListRowVMs) { viewModel in
+            ExchangeRateListRow(viewModel: viewModel)
         }
     }
 }

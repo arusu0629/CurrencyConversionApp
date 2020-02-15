@@ -12,15 +12,15 @@ struct ExchangeRateListRow: View {
     
     @ObservedObject var exchangeRateListRowVM: ExchangeRateListRowVM
     
-    init(currency: Currency) {
-        self.exchangeRateListRowVM = ExchangeRateListRowVM(currency: currency)
+    init(viewModel: ExchangeRateListRowVM) {
+        self.exchangeRateListRowVM = viewModel
     }
     
     var body: some View {
         HStack {
             Text(self.exchangeRateListRowVM.currency.unit)
             Spacer()
-            Text("\(self.exchangeRateListRowVM.currency.amountBasedOnUSD)")
+            Text("\(self.exchangeRateListRowVM.amountRate)")
         }
         .padding()
     }
@@ -28,6 +28,6 @@ struct ExchangeRateListRow: View {
 
 struct ExchangeRateListRow_Previews: PreviewProvider {
     static var previews: some View {
-        ExchangeRateListRow(currency: Currency(unit: "JPY", amountBasedOnUSD: 100))
+        ExchangeRateListRow(viewModel: ExchangeRateListRowVM(currency: Currency(unit: "JPY", amountBasedOnUSD: 100)))
     }
 }

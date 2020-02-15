@@ -11,11 +11,17 @@ import SwiftUI
 struct CurrencyAmountInputView: View {
     
     @ObservedObject var amountInputVM = CurrencyAmountInputVM()
+    @EnvironmentObject var exchangeRateListVM: ExchangeRateListVM
     
     var body: some View {
-        TextField("Input Currency Amount", text: $amountInputVM.amountText, onEditingChanged: amountInputVM.onChanged, onCommit: amountInputVM.onCommit)
+        TextField("Input Currency Amount", text: $amountInputVM.amountText, onEditingChanged: amountInputVM.onChanged, onCommit: self.onCommit)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .keyboardType(.numberPad)
+    }
+    
+    private func onCommit() {
+        self.amountInputVM.onCommit()
+        self.exchangeRateListVM.updateInputAmount(amount: self.amountInputVM.amount)
     }
 }
 

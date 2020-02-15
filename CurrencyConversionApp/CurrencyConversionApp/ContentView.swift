@@ -9,18 +9,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let exchangeRateListVM = ExchangeRateListVM()
+    
     var body: some View {
         VStack {
             // 通貨量入力画面
-            CurrencyAmountInputView()
+            currencyAmountInputView
             HStack {
                 Spacer()
                 // 通貨単位選択画面
                 CurrencyUnitSelectView()
             }
             // 他通貨のレートリスト
-            ExchangeRateListView()
+            exchangeRateListView
         }
+    }
+    
+    var currencyAmountInputView: some View {
+        return CurrencyAmountInputView().environmentObject(exchangeRateListVM)
+    }
+    
+    var exchangeRateListView: some View {
+        return ExchangeRateListView().environmentObject(exchangeRateListVM)
     }
 }
 

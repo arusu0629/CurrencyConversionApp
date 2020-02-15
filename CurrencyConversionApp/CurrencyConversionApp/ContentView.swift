@@ -11,7 +11,13 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
+            // 通貨量入力画面
             CurrencyAmountInputView()
+            HStack {
+                Spacer()
+                // 通貨単位選択画面
+                CurrencyUnitSelectView()
+            }
         }
     }
 }

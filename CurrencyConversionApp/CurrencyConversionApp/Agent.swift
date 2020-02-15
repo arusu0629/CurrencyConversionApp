@@ -34,7 +34,7 @@ enum CurrencyLayerAPI {
 }
 
 extension CurrencyLayerAPI {
-    static func live() -> AnyPublisher<Currency, Error> {
+    static func live() -> AnyPublisher<Live, Error> {
         let url = base.appendingPathComponent("live")
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = [

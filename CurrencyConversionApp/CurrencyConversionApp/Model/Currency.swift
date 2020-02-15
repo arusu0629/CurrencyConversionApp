@@ -9,11 +9,17 @@
 import Foundation
 
 struct Currency: Codable {
+    public let unit: String
+    // USD1ドルを基準にした通貨量
+    public let amountBasedOnUSD: Double
+}
+
+struct Live: Codable {
     public let source: String
     public let quotes: [String : Double]
 }
 
-extension Currency {
+extension Live {
     enum CodingKeys: String, CodingKey {
         case source = "source"
         case quotes = "quotes"

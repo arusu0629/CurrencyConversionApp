@@ -18,6 +18,8 @@ struct ContentView: View {
                 // 通貨単位選択画面
                 CurrencyUnitSelectView()
             }
+            // 他通貨のレートリスト
+            ExchangeRateListView()
         }
     }
 }

@@ -21,6 +21,10 @@
 		2EADEA6F23F6D4FF00AF3EEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EADEA6D23F6D4FF00AF3EEA /* LaunchScreen.storyboard */; };
 		2EB2E1D923F7BF1400AB5DF8 /* LiveData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EB2E1D823F7BF1400AB5DF8 /* LiveData.json */; };
 		2EB2E1DB23F7BF5300AB5DF8 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2E1DA23F7BF5300AB5DF8 /* Data.swift */; };
+		2EB2E1DD23F7D17400AB5DF8 /* ExchangeRateListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2E1DC23F7D17400AB5DF8 /* ExchangeRateListRow.swift */; };
+		2EB2E1DF23F7D1E700AB5DF8 /* ExchangeRateListRowVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2E1DE23F7D1E700AB5DF8 /* ExchangeRateListRowVM.swift */; };
+		2EB2E1E123F7D24800AB5DF8 /* ExchangeRateListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2E1E023F7D24800AB5DF8 /* ExchangeRateListVM.swift */; };
+		2EB2E1E323F7D2DB00AB5DF8 /* ExchangeRateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2E1E223F7D2DB00AB5DF8 /* ExchangeRateListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		2EADEA7023F6D4FF00AF3EEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EB2E1D823F7BF1400AB5DF8 /* LiveData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LiveData.json; sourceTree = "<group>"; };
 		2EB2E1DA23F7BF5300AB5DF8 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		2EB2E1DC23F7D17400AB5DF8 /* ExchangeRateListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateListRow.swift; sourceTree = "<group>"; };
+		2EB2E1DE23F7D1E700AB5DF8 /* ExchangeRateListRowVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateListRowVM.swift; sourceTree = "<group>"; };
+		2EB2E1E023F7D24800AB5DF8 /* ExchangeRateListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateListVM.swift; sourceTree = "<group>"; };
+		2EB2E1E223F7D2DB00AB5DF8 /* ExchangeRateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRateListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,8 @@
 			children = (
 				2E38A46423F7AED2002B219A /* CurrencyAmountInputView.swift */,
 				2E38A46923F7BBBC002B219A /* CurrencyUnitSelectView.swift */,
+				2EB2E1DC23F7D17400AB5DF8 /* ExchangeRateListRow.swift */,
+				2EB2E1E223F7D2DB00AB5DF8 /* ExchangeRateListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -75,6 +85,8 @@
 			children = (
 				2E38A46723F7AF52002B219A /* CurrencyAmountInputVM.swift */,
 				2E38A46B23F7BC7E002B219A /* CurrencyUnitSelectVM.swift */,
+				2EB2E1DE23F7D1E700AB5DF8 /* ExchangeRateListRowVM.swift */,
+				2EB2E1E023F7D24800AB5DF8 /* ExchangeRateListVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -204,12 +216,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E38A46523F7AED2002B219A /* CurrencyAmountInputView.swift in Sources */,
+				2EB2E1E323F7D2DB00AB5DF8 /* ExchangeRateListView.swift in Sources */,
 				2EB2E1DB23F7BF5300AB5DF8 /* Data.swift in Sources */,
 				2E38A46823F7AF52002B219A /* CurrencyAmountInputVM.swift in Sources */,
 				2E38A46A23F7BBBC002B219A /* CurrencyUnitSelectView.swift in Sources */,
 				2E38A46C23F7BC7E002B219A /* CurrencyUnitSelectVM.swift in Sources */,
+				2EB2E1DD23F7D17400AB5DF8 /* ExchangeRateListRow.swift in Sources */,
+				2EB2E1E123F7D24800AB5DF8 /* ExchangeRateListVM.swift in Sources */,
 				2EADEA6323F6D4FD00AF3EEA /* AppDelegate.swift in Sources */,
 				2E38A46223F6F45B002B219A /* Currency.swift in Sources */,
+				2EB2E1DF23F7D1E700AB5DF8 /* ExchangeRateListRowVM.swift in Sources */,
 				2E5BDD9323F6D60900708195 /* Agent.swift in Sources */,
 				2EADEA6523F6D4FD00AF3EEA /* SceneDelegate.swift in Sources */,
 				2EADEA6723F6D4FD00AF3EEA /* ContentView.swift in Sources */,

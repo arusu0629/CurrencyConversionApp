@@ -9,16 +9,28 @@
 import Foundation
 
 struct Currency: Codable, Identifiable {
-    public let unit: String
+    public var unit: String = ""
     // USD1ドルを基準にした通貨量
     public let amountBasedOnUSD: Double
     
-    public let id: String
+    public var id: String = ""
     
     init(unit: String, amountBasedOnUSD: Double) {
         self.unit = unit
         self.amountBasedOnUSD = amountBasedOnUSD
         self.id = unit
+
+        convertUnit()
+    }
+    
+    // 渡される unit は prefix に基準通貨単位が付いているのでそれを消す
+    // 例) USDが基準通貨の場合のJPY: USDJPY となるため JPY にする
+    private mutating func convertUnit() {
+        var removedPrefixUnit = unit
+        removedPrefixUnit.removeSubrange(unit.startIndex..<unit.index(unit.startIndex, offsetBy: 3))
+        
+        self.unit = removedPrefixUnit
+        self.id = removedPrefixUnit
     }
 }
 

@@ -13,10 +13,10 @@ final class CurrencyAmountInputVM: ObservableObject {
     // 10桁まで入力可能
     private let maxLength: Int = 10
     
-    @Published var amountText: String = ""
-    var amount: Int {
-        guard let amount = Int(amountText) else {
-            return 0
+    @Published var amountText: String = "1.00"
+    var amount: Double {
+        guard let amount = Double(amountText) else {
+            return 0.0
         }
         return amount
     }

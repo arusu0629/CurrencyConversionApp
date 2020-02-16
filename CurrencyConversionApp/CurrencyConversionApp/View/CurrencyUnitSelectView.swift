@@ -7,10 +7,13 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CurrencyUnitSelectView: View {
     
     @ObservedObject var currencyUnitSelectVM = CurrencyUnitSelectVM()
+    @EnvironmentObject var exchangeRateListVM: ExchangeRateListVM
+    
     var body: some View {
         VStack {
             Picker(selection: $currencyUnitSelectVM.selection, label: labelView()) {
@@ -21,12 +24,18 @@ struct CurrencyUnitSelectView: View {
             .frame(maxWidth: 100, maxHeight: 100)
             .clipped()
             .labelsHidden()
+            .onReceive(Just(self.currencyUnitSelectVM.selection), perform: onChangeUnit)
         }
     }
     
     private func labelView() -> some View {
         return EmptyView()
             .frame(maxWidth: 100, maxHeight: 35)
+    }
+    
+    private func onChangeUnit(index: Int) {
+        let selectedUnit = self.currencyUnitSelectVM.units[index]
+        exchangeRateListVM.updateUnit(unit: selectedUnit)
     }
 }
 

@@ -19,7 +19,7 @@ struct ContentView: View {
             HStack {
                 Spacer()
                 // 通貨単位選択画面
-                CurrencyUnitSelectView()
+                currencyUnitSelectView
             }
             // 他通貨のレートリスト
             exchangeRateListView
@@ -28,6 +28,10 @@ struct ContentView: View {
     
     var currencyAmountInputView: some View {
         return CurrencyAmountInputView().environmentObject(exchangeRateListVM)
+    }
+    
+    var currencyUnitSelectView: some View {
+        return CurrencyUnitSelectView().environmentObject(exchangeRateListVM)
     }
     
     var exchangeRateListView: some View {

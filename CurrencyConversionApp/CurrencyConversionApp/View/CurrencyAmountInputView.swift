@@ -11,7 +11,11 @@ import SwiftUI
 struct CurrencyAmountInputView: View {
     
     @ObservedObject var amountInputVM = CurrencyAmountInputVM()
-    @EnvironmentObject var exchangeRateListVM: ExchangeRateListVM
+    @ObservedObject var exchangeRateListVM: ExchangeRateListVM
+    
+    init(exchangeRateListVM: ExchangeRateListVM) {
+        self.exchangeRateListVM = exchangeRateListVM
+    }
     
     var body: some View {
         TextField("Input Currency Amount", text: $amountInputVM.amountText, onEditingChanged: amountInputVM.onChanged, onCommit: self.onCommit)
@@ -32,6 +36,6 @@ struct CurrencyAmountInputView: View {
 
 struct CurrencyAmountInputView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrencyAmountInputView()
+        CurrencyAmountInputView(exchangeRateListVM: ExchangeRateListVM())
     }
 }

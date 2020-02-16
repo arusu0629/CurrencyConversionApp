@@ -10,7 +10,16 @@ import SwiftUI
 
 struct ContentView: View {
     
+    let contentVM = ContentVM()
     let exchangeRateListVM = ExchangeRateListVM()
+    
+    init() {
+        contentVM.addGetCurrenciesCallback(callback: getCurrenciesCallback)
+    }
+    
+    private func getCurrenciesCallback(currencies: [Currency]) {
+        exchangeRateListVM.createExchangeRateListRowVMs(currencies: currencies)
+    }
     
     var body: some View {
         VStack {
@@ -24,18 +33,19 @@ struct ContentView: View {
             // 他通貨のレートリスト
             exchangeRateListView
         }
+        .onDisappear(perform: contentVM.onDisappear)
     }
     
     var currencyAmountInputView: some View {
-        return CurrencyAmountInputView().environmentObject(exchangeRateListVM)
+        return CurrencyAmountInputView(exchangeRateListVM: exchangeRateListVM)
     }
     
     var currencyUnitSelectView: some View {
-        return CurrencyUnitSelectView().environmentObject(exchangeRateListVM)
+        return CurrencyUnitSelectView(contentVM: contentVM, exchangeRateListVM: exchangeRateListVM)
     }
-    
+
     var exchangeRateListView: some View {
-        return ExchangeRateListView().environmentObject(exchangeRateListVM)
+        return ExchangeRateListView(exchangeRateListVM: exchangeRateListVM)
     }
 }
 

@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ExchangeRateListView: View {
     
-    @EnvironmentObject var exchangeRateListVM: ExchangeRateListVM
+    @ObservedObject var exchangeRateListVM: ExchangeRateListVM
+    
+    init(exchangeRateListVM: ExchangeRateListVM) {
+        self.exchangeRateListVM = exchangeRateListVM
+    }
     
     var body: some View {
         List(exchangeRateListVM.exchangeRateListRowVMs) { viewModel in
@@ -21,6 +25,6 @@ struct ExchangeRateListView: View {
 
 struct ExchangeRateListView_Previews: PreviewProvider {
     static var previews: some View {
-        ExchangeRateListView()
+        ExchangeRateListView(exchangeRateListVM: ExchangeRateListVM())
     }
 }

@@ -9,21 +9,15 @@
 import Foundation
 
 final class ExchangeRateListVM: ObservableObject {
-
-    @Published private(set) var currencies = [Currency]()
-    @Published private(set) var exchangeRateListRowVMs = [ExchangeRateListRowVM]()
     
+    @Published private(set) var exchangeRateListRowVMs = [ExchangeRateListRowVM]()
+
     private var inputAmount: Double = 0.0
     private var selectedUnit: String = ""
-    
-    init() {
-        fetchCurrencies()
-    }
-    
-    private func fetchCurrencies() {
-        // TODO: Live情報取得を正しく実装
-        self.currencies = liveData.quotes.map { (unit, amount) in Currency(unit: unit, amountBasedOnUSD: amount) }
-        self.exchangeRateListRowVMs = self.currencies.map { (currency) in ExchangeRateListRowVM(currency: currency) }
+
+    // 通貨情報から他通貨リストアイテム用のViewModelを生成する
+    func createExchangeRateListRowVMs(currencies: [Currency]) {
+        self.exchangeRateListRowVMs = currencies.map { (currency) in ExchangeRateListRowVM(currency: currency) }
     }
     
     // 入力通貨量が変わると呼ばれる
@@ -57,10 +51,10 @@ final class ExchangeRateListVM: ObservableObject {
     // USDの1ドルあたりの通貨量に変換する
     private func convertUSDPerOneDoller(from: String) -> Double {
         var rate = 0.0
-        guard let currency = currencies.first(where: { (currency) in currency.unit == from }) else {
+        guard let listRowVM = exchangeRateListRowVMs.first(where: { (listRowVM) in listRowVM.currency.unit == from }) else {
             return rate
         }
-        rate = currency.amountBasedOnUSD
+        rate = listRowVM.currency.amountBasedOnUSD
         return rate
     }
 }

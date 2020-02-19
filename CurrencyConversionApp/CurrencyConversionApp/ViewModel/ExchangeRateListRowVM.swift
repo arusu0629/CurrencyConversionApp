@@ -10,14 +10,14 @@ import Foundation
 
 final class ExchangeRateListRowVM: ObservableObject, Identifiable {
 
-    @Published private(set) var currency: Currency
+    @Published private(set) var currency: CurrencyType
     
     // 基準通貨に対するこの通貨のレート
     @Published private(set) var amountRate: Double
     
     public let id: String
     
-    init(currency: Currency) {
+    init(currency: CurrencyType) {
         self.currency = currency
         self.amountRate = currency.amountBasedOnUSD
         self.id = currency.id

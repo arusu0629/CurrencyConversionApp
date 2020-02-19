@@ -34,27 +34,23 @@ final class ExchangeRateListVM: ObservableObject {
     
     // 他通貨の量を更新する
     private func updateAmount() {
-        let amount = calcUSDAmount()
+        let amountBasedOnUsd = convertUSDPerOneDoller(from: self.selectedUnit)
+        let amount = calcUSDAmount(inputAmount: self.inputAmount, amountBasedOnUSD: amountBasedOnUsd)
         exchangeRateListRowVMs.forEach { (viewModel) in
             viewModel.updateRate(usdAmount: amount)
         }
     }
     
     // 現在入力されている通貨量, 選択されている通貨単位を基準となるUSDあたりの通貨量に変換する
-    private func calcUSDAmount() -> Double {
-        // 選択されている通貨単位をUSDの1ドルあたりの通貨量にする
-        let amountBasedOnUSD = convertUSDPerOneDoller(from: self.selectedUnit)
-        let amount = self.inputAmount / amountBasedOnUSD
-        return amount
+    func calcUSDAmount(inputAmount: Double, amountBasedOnUSD: Double) -> Double {
+        return inputAmount / amountBasedOnUSD
     }
     
     // USDの1ドルあたりの通貨量に変換する
     private func convertUSDPerOneDoller(from: String) -> Double {
-        var rate = 0.0
         guard let listRowVM = exchangeRateListRowVMs.first(where: { (listRowVM) in listRowVM.currency.unit == from }) else {
-            return rate
+            return 0.0
         }
-        rate = listRowVM.currency.amountBasedOnUSD
-        return rate
+        return listRowVM.currency.amountBasedOnUSD
     }
 }

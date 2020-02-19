@@ -8,10 +8,17 @@
 
 import Foundation
 
-struct Currency: Codable, Identifiable {
+protocol CurrencyType {
+    var unit: String { get set }
+    var amountBasedOnUSD: Double { get }
+    var id: String { get set }
+}
+
+struct Currency: CurrencyType, Codable, Identifiable {
+    
     public var unit: String = ""
     // USD1ドルを基準にした通貨量
-    public let amountBasedOnUSD: Double
+    public var amountBasedOnUSD: Double
     
     public var id: String = ""
     

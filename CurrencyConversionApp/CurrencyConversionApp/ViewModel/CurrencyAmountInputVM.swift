@@ -15,10 +15,7 @@ final class CurrencyAmountInputVM: ObservableObject {
     
     @Published var amountText: String = "1.00"
     var amount: Double {
-        guard let amount = Double(amountText) else {
-            return 0.0
-        }
-        return amount
+        return Double(amountText) ?? 0.0
     }
     
     func onChanged(onChange: Bool) {

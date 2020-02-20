@@ -39,7 +39,6 @@ extension CurrencyLayerAPI {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = [
             URLQueryItem(name: "access_key", value: accessToken),
-            URLQueryItem(name: "currencies", value: "JPY,EUR,USD")
         ]
         let request = URLRequest(url: urlComponents.url!)
         return agent.run(request)

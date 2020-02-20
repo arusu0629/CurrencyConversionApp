@@ -20,7 +20,7 @@ struct CurrencyAmountInputView: View {
     var body: some View {
         TextField("Input Currency Amount", text: $amountInputVM.amountText, onEditingChanged: amountInputVM.onChanged, onCommit: self.onCommit)
             .textFieldStyle(RoundedBorderTextFieldStyle())
-            .keyboardType(.numberPad)
+            .keyboardType(.numbersAndPunctuation)
             .onAppear(perform:  onAppear)
     }
     

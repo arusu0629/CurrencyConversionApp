@@ -12,3 +12,6 @@ enum CurrencyLayerAPI {
     static let accessToken = "XXXXXX"
 }
 ```
+
+# Demo
+![demo](https://raw.githubusercontent.com/wiki/arusu0629/CurrencyConversionApp/Images/CurrencyConversionApp.gif)
